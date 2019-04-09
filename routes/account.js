@@ -25,8 +25,8 @@ router.get('/signup', function (req, res, next) {
 })
 
 router.post('/signup', function (req, res, next) {
-	var { username, password, ta } = req.body;
-	var u = new User({ username, password, ta });
+	var { username, password, type } = req.body;
+	var u = new User({ username, password, type });
 	u.save(function (err, result) {
 		if (!err) {
 			res.redirect('/')
@@ -42,11 +42,11 @@ router.get('/login', function (req, res, next) {
 })
 
 router.post('/login', function (req, res, next) {
-	var { username, password } = req.body;
-	User.findOne({ username, password }, function (err, result) {
+	var { username, password, type } = req.body;
+	User.findOne({ username, password, type }, function (err, result) {
 		if (result) {
 			req.session.user = result.username;
-			res.send("Hi " + result.username + ", you're logged in");
+			res.redirect('/')
 		} else {
 			next(new Error("Whoops, incorrect credentials!"));
 		}

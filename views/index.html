@@ -55,7 +55,7 @@
               <a class="btn" type="btn" id="remove-queue-item">Remove from Queue</a>
             </div>
             <br/><br/>
-            <% if (user) { %>
+            <% if (user.type === "TA") { %>
             <a class="btn" type="submit" id="seeStudent">See student</a>
             <% } %>
         </div>

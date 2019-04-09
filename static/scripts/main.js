@@ -74,7 +74,7 @@ $(document).ready(function () {
   $('#remove-queue-item').on('click', function () {
     $.ajax({
       url: '/api/removeQueueItem',
-      data: { qid: data[activeIdx]._id },
+      data: { qid: data[activeIdx]._id, qAuthor: data[activeIdx].author },
       type: 'DELETE',
       success: function(res) {
         console.log(res);

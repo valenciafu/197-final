@@ -46,6 +46,7 @@ router.post('/login', function (req, res, next) {
 	User.findOne({ username, password, type }, function (err, result) {
 		if (result) {
 			req.session.user = result.username;
+			req.session.usertype = result.type;
 			res.redirect('/')
 		} else {
 			next(new Error("Whoops, incorrect credentials!"));

@@ -45,10 +45,10 @@ var User = require('./models/user');
 //       also pass to ejs template a user object so we can conditionally
 //       render the submit box
 app.get('/', function (req, res, next) {
-  //console.log(req.session.user);
+  console.log(req.session.usertype);
   var questionDb = Question.find({}, function(err, results) {
   	if (!err) {
-  		res.render('index', { questions: results, user: req.session.user });
+  		res.render('index', { questions: results, user: req.session.user, userType: req.session.usertype });
   	} else {
   		res.send(err.message);
   	}

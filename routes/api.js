@@ -36,14 +36,21 @@ router.post('/seeStudent', function (req, res, next) {
 })
 
 router.delete('/removeQueueItem', function (req, res, next) {
-	var qid = req.body.qid;
+	var user = req.session.user;
+	var userType = req.session.usertype;
+	var qAuthor = req.body.qAuthor;
 
-	Question.findByIdAndRemove(qid, function (err, question) {
-		question.save(function (saveErr, result) {
-			if (saveErr) next(saveErr);
-			res.json({ status: "OK"});
-		});
-	}); 
+	if (userType === 'ta' || user === qAuthor) {
+		var qid = req.body.qid;
+		Question.findByIdAndRemove(qid, function (err, question) {
+			question.save(function (saveErr, result) {
+				if (saveErr) next(saveErr);
+				res.json({ status: "OK"});
+			});
+		}); 
+	} else {
+		res.json({ status: "Error: Students cannot alter spots that are not your own"});
+	}
 })
 
 module.exports = router;

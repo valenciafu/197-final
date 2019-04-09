@@ -82,9 +82,13 @@ $(document).ready(function () {
     })
   })
 
+  $('#faq-button').on('click', function () {
+    $('.faqm').css('display', 'block');
+  })
+
   // when we want to make a new question, show the modal
   $('#new-question').on('click', function () {
-    $('.modal').css('display', 'block');
+    $('.nqm').css('display', 'block');
   })
 
 

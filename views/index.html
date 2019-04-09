@@ -14,7 +14,21 @@
       <% if (user) { %>
       <p>Hi <b><%= user %></b>!</p>
       <p>
+      <a class="button is-primary is-outlined" id="faq-button" href="#">FAQ</a>
       <a class="button is-primary is-outlined" href="/account/logout">Log out</a>
+      <!-- modal for faq -->
+      <div class="modal faqm" style="display:none;">
+        <div class="modal-background"></div>
+        <div class="modal-content" style="text-align: right">
+          <button class="delete is-large" aria-label="close" id="close-modal"></button>
+          <p align="left">
+            No more blackboard OH queues! View the queue in the column to the left. Grayed spots are currently being seen by TAs.
+            <br><br>
+            Students: join the queue in two clicks. Edit or remove your own spot(s) in the queue 
+            <br><br> 
+          TAs: Click on students in the queue to see them or remove them from the queue.</p>
+        </div>
+      </div>
       </p>
       <% } %>
     </div>
@@ -23,7 +37,7 @@
       <% if (user) { %>
       <a href="#" class="btn" id="new-question">+ Join Queue</a>
       <!-- modal for adding new question -->
-      <div class="modal" style="display:none;">
+      <div class="modal nqm" style="display:none;">
         <div class="modal-background"></div>
         <div class="modal-content" style="text-align: right">
           <button class="delete is-large" aria-label="close" id="close-modal"></button>
@@ -59,8 +73,8 @@
                 <i>Question details</i>
                 <br>
                 <span id="questionText"></span>
-                </p>
-                <br>
+              </p>
+              <br>
               <hr>
               <div style="text-align:center;">
                 <a class="button is-warning" type="btn" id="remove-queue-item" style="vertical-align: center">Remove from Queue</a>
@@ -68,8 +82,8 @@
             </div>
             <br/><br/>
             <div style="text-align:center;">
-              <% if (user) { %>
-              <a class="button is-success" type="submit" id="seeStudent">See student</a>
+              <% if (user.type === 'TA') { %>
+              <a class="button is-success" type="submit" id="seeStudent">See this Student</a>
               <% } %>
             </div>
         </div>

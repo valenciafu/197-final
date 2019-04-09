@@ -4,15 +4,17 @@
     <!-- new  stuff -->
     <script src="/static/scripts/lib/jquery.min.js"></script>
     <script src="/static/scripts/main.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
     <link rel="stylesheet" type="text/css" href="/static/styles/styles.css"/>
   </head>
 
   <body>
-    <div class="nav">
-      <h2>Office Hours Queue</h2>
+    <div class="nav level is-marginless">
+      <h1 style="font-size:2rem; font-weight:600; margin-left:1rem">Office Hours Queue</h1>
       <% if (user) { %>
-      <p>Hi <%= user %> | 
-      <a href="/account/logout">Log out</a>
+      <p>Hi <b><%= user %></b>!</p>
+      <p>
+      <a class="button is-primary is-outlined" href="/account/logout">Log out</a>
       </p>
       <% } %>
     </div>
@@ -50,9 +52,12 @@
       <div class="right-col">
         <div id="show-question" style="display:none">
             <div id="question-info">
-              <p id="author" style="font-size:3rem"></p>
-              <p> Question details: <span id="questionText"></span></p>
-              <a class="btn" type="btn" id="remove-queue-item">Remove from Queue</a>
+              <i>Student name</i>
+              <p id="author" style="font-size:2rem"></p>
+              <hr>
+              <p> <i> Question details: </i><span id="questionText"></span></p><br>
+              <hr>
+              <a class="button is-warning" type="btn" id="remove-queue-item">Remove from Queue</a>
             </div>
             <br/><br/>
             <% if (user.type === "TA") { %>

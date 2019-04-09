@@ -16,7 +16,7 @@ var express = require('express');
 var app = express();
 // instantiate a mongoose connect call
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/hw5-new', {useNewUrlParser: true})
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ohq_db', {useNewUrlParser: true})
 
 // set the express view engine to take care of ejs within html files
 app.engine('html', require('ejs').__express);
@@ -62,7 +62,7 @@ app.get('/', function (req, res, next) {
 app.post('/', isAuthenticated, function (req, res, next) {
 	var q = req.body.question;
   var a = req.session.user
-	var dbQ = new Question({ questionText: q, author: a });
+	var dbQ = new Question({ author: a, questionText: q });
 	dbQ.save(function (err, result, next) {
 		if (!err) {
 			res.redirect('/');
@@ -71,7 +71,6 @@ app.post('/', isAuthenticated, function (req, res, next) {
 		}
 	})
 })
-
 
 app.use('/api', apiRoutes);
 

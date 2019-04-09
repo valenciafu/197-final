@@ -24,7 +24,7 @@ $(document).ready(function () {
   // that allows you to access their _id by doing $whateverjQueryObjectYouHave.data('qid')
   function renderPreviews() {
     $('#questions').html(
-        data.map((i) => '<li data-qid="' + i._id + '">' + i.questionText + '</li>').join('')
+        data.map((i) => '<li data-qid="' + i._id + '">' + i.author + '</li>').join('')
     )
   }
 
@@ -51,11 +51,27 @@ $(document).ready(function () {
     renderActive();
   })
 
-  $('#show-question').on('click', '#submitAnswer', function () {
-    var answer = $('#answer').val();
+  $('#show-question').on('click', '#seeStudent', function () {
+    var _id = data[activeIdx]._id;
+    console.log(_id);
+    console.log('see student');
     $.ajax({
-      url: '/api/answerQuestion',
-      data: { qid: data[activeIdx]._id, answer: answer },
+      url: '/api/seeStudent',
+      data: { qid: data[activeIdx]._id },
+      type: 'POST',
+      success: function(res) {
+        console.log(res);
+      }
+    })
+  })
+
+  $('#removeQueueItem').on('click', function () {
+    console.log('trying to remove');
+    var _id = data[activeIdx]._id;
+
+    $.ajax({
+      url: '/api/removeQueueItem',
+      data: { qid: data[activeIdx]._id },
       type: 'POST',
       success: function(res) {
         console.log(res);
@@ -64,7 +80,7 @@ $(document).ready(function () {
   })
 
   // when we want to make a new question, show the modal
-    $('#new-question').on('click', function () {
+  $('#new-question').on('click', function () {
     $('.modal').css('display', 'block');
   })
 

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 const answerSchema = new mongoose.Schema({
-	answer: { type: String },
+	seen: { type: Boolean },
 	qid: { type: String }
 })
 

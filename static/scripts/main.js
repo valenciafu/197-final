@@ -22,9 +22,15 @@ $(document).ready(function () {
 
   // makes a list  of questions which all have the question text and a data-qid attribute
   // that allows you to access their _id by doing $whateverjQueryObjectYouHave.data('qid')
+  // function renderPreviews() {
+  //   $('#questions').html(
+  //     data.map((i) => '<li data-qid="' + i._id + '">' + i.author + '</li>').join('')
+  //   )
+  // }
+
   function renderPreviews() {
     $('#questions').html(
-        data.map((i) => '<li data-qid="' + i._id + '">' + i.author + '</li>').join('')
+      data.map((i) => '<li data-qid="' + i._id + '" id="' + i.seen + '">' + i.author + '</li>').join('')
     )
   }
 
@@ -51,8 +57,9 @@ $(document).ready(function () {
     renderActive();
   })
 
-  $('#show-question').on('click', '#seeStudent', function () {
-    console.log('see student');
+    $('#seeStudent').on('click', function () {
+    var _id = data[activeIdx]._id;
+    console.log(_id)
     $.ajax({
       url: '/api/seeStudent',
       data: { qid: data[activeIdx]._id },
@@ -63,13 +70,12 @@ $(document).ready(function () {
     })
   })
 
-  $('#remove-queue-item').on('click', function () {
-    console.log('trying to remove');
 
+  $('#remove-queue-item').on('click', function () {
     $.ajax({
       url: '/api/removeQueueItem',
       data: { qid: data[activeIdx]._id },
-      type: 'POST',
+      type: 'DELETE',
       success: function(res) {
         console.log(res);
       }
@@ -91,7 +97,7 @@ $(document).ready(function () {
     var qText = $('#question-text').val();
 
     $.ajax({
-      url: '/api/addQuestion',
+      url: '/api/joinQueue',
       data: { questionText: qText },
       type: 'POST',
       success: function(res) {

@@ -24,7 +24,7 @@
       <div class="modal" style="display:none">
 
         <div class="question-area">
-          <p>Your name will display as: <%= user %> </p>
+          <p>Your name will display in the queue as: <%= user %> </p>
           <br>
           <p>Optional: write anything to help a TA understand your question </p>
           <textarea type="text" id="question-text" style="margin-top:0">
@@ -40,13 +40,13 @@
       <ul id="questions">
         <% if (typeof questions == 'object') { %>
           <% questions.forEach(function(q) { %>
-          <li data-qid=<%= q.id %>><%= q.author %></li>
+          <li data-qid=<%= q.id %>><%= q.author %> </li>
           <% }) 
         } %>
       </ul>
       </div>
           
-      <!-- where a question is displayed -->
+      <!-- where a queue item is displayed -->
       <div class="right-col">
         <div id="show-question" style="display:none">
             <div id="question-info">

@@ -5,6 +5,17 @@ var User = require('../models/user');
 
 var isAuthenticated = require('../middlewares/isAuthenticated');
 
+//json of all accounts
+router.get('/getAccounts', function (req, res, next) {
+	var userDb = User.find({}, function(err, results) {
+  	if (!err) {
+  		res.json({ users: results });
+  	} else {
+  		res.send(err.message);
+  	}
+  })
+})
+
 //Signup routes
 router.get('/signup', function (req, res, next) {
 	User.find({}, function (err, results) {
@@ -14,8 +25,8 @@ router.get('/signup', function (req, res, next) {
 })
 
 router.post('/signup', function (req, res, next) {
-	var { username, password, TA } = req.body;
-	var u = new User({ username, password, TA });
+	var { username, password, ta } = req.body;
+	var u = new User({ username, password, ta });
 	u.save(function (err, result) {
 		if (!err) {
 			res.redirect('/')
@@ -35,7 +46,7 @@ router.post('/login', function (req, res, next) {
 	User.findOne({ username, password }, function (err, result) {
 		if (result) {
 			req.session.user = result.username;
-			res.send("Hi" + result.username + ", you're logged in");
+			res.send("Hi " + result.username + ", you're logged in");
 		} else {
 			next(new Error("Whoops, incorrect credentials!"));
 		}

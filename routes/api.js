@@ -35,7 +35,7 @@ router.post('/seeStudent', function (req, res, next) {
 	}); 
 })
 
-router.post('/removeQueueItem', function (req, res, next) {
+router.delete('/removeQueueItem', function (req, res, next) {
 	var qid = req.body.qid;
 
 	Question.findByIdAndRemove(qid, function (err, question) {

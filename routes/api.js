@@ -19,7 +19,7 @@ router.post('/joinQueue', function (req, res, next) {
 	var q = new Question({ questionText, author });
 	q.save(function (err, result) {
 		if (err) next(err);
-		res.json({ status: "OK" });
+		res.json({ status: "OK, joined queue" });
 	});
 })
 

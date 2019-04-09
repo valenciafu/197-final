@@ -52,8 +52,6 @@ $(document).ready(function () {
   })
 
   $('#show-question').on('click', '#seeStudent', function () {
-    var _id = data[activeIdx]._id;
-    console.log(_id);
     console.log('see student');
     $.ajax({
       url: '/api/seeStudent',
@@ -65,9 +63,8 @@ $(document).ready(function () {
     })
   })
 
-  $('#removeQueueItem').on('click', function () {
+  $('#remove-queue-item').on('click', function () {
     console.log('trying to remove');
-    var _id = data[activeIdx]._id;
 
     $.ajax({
       url: '/api/removeQueueItem',

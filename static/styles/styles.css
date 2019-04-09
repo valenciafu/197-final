@@ -33,7 +33,7 @@ body {
 }
 
 .left-col {
-  width: 40%;
+  width: 30%;
   height: 90%;
   overflow-y:  scroll;
   float: left;
@@ -41,7 +41,7 @@ body {
 }
 
 .right-col {
-  width: 50%;
+  width: 60%;
   margin-left: 5%;
   display: inline-block;
 }
@@ -56,7 +56,7 @@ li {
   list-style: none;
   padding: 20px;
   margin: 5px;
-  border: 1px solid #000;
+  border: 1px solid #4c4c4c;
   border-radius: 5px;
   transition: all 0.5s
 }
@@ -72,11 +72,10 @@ ul {
 }
 
 #question-info {
-  width: 90%;
   margin: 0 auto;
   margin-top: 5%;
   padding: 5%;
-  border: 1px solid #000;
+  border: 1px solid #4c4c4c;
   border-radius: 5px;
 }
 
@@ -90,13 +89,13 @@ ul {
   margin-bottom: 20px;
 }
 
-.modal {
+/*.modal {
   width: 100%;
   height: 100%;
   position: fixed;
   top:0px;
   left:0px;
-  background-color: rgba(0,0,0,.5);
+  background-color: rgba(33,33,33,.2);
 }
 
 .modal > .question-area {
@@ -107,9 +106,25 @@ ul {
   margin-right: 25%;
   margin-top: 200px;
   margin-bottom: 50px;
+  padding:25px;
+}*/
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 5px;
+  margin-top: 10%;
 }
 
-.question-area > textarea {
+.modal-background {
+  background: rgba(33,33,33,0.3);
+}
+
+/*.question-area > textarea {
   width: 80%;
   margin: 10%;
+}*/
+
+#seeStudent {
+  margin: 0 auto;
 }

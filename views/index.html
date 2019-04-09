@@ -23,16 +23,16 @@
       <% if (user) { %>
       <a href="#" class="btn" id="new-question">+ Join Queue</a>
       <!-- modal for adding new question -->
-      <div class="modal" style="display:none">
-
-        <div class="question-area">
-          <p>Your name will display in the queue as: <%= user %> </p>
+      <div class="modal" style="display:none;">
+        <div class="modal-background"></div>
+        <div class="modal-content" style="text-align: right">
+          <button class="delete is-large" aria-label="close" id="close-modal"></button>
+          <p align="left">Your name will display in the queue as: <b><%= user %></b></p>
           <br>
-          <p>Optional: write anything to help a TA understand your question </p>
-          <textarea type="text" id="question-text" style="margin-top:0">
-          </textarea>
-          <a class="btn" type="submit" id="submit-question">Join</a>
-          <a class="btn" id="close-modal">Close</a>
+          <p> </p>
+          <textarea type="text" class="textarea" placeholder="Optional: write anything to help the TAs understand your question" id="question-text"></textarea>
+          <br>
+          <a class="button is-success" type="submit" id="submit-question">Join Queue</a>
         </div>
       </div>
       <% } else { %>
@@ -53,16 +53,25 @@
         <div id="show-question" style="display:none">
             <div id="question-info">
               <i>Student name</i>
-              <p id="author" style="font-size:2rem"></p>
+              <p id="author" style="font-size:2rem; font-weight:600"></p>
               <hr>
-              <p> <i> Question details: </i><span id="questionText"></span></p><br>
+              <p> 
+                <i>Question details</i>
+                <br>
+                <span id="questionText"></span>
+                </p>
+                <br>
               <hr>
-              <a class="button is-warning" type="btn" id="remove-queue-item">Remove from Queue</a>
+              <div style="text-align:center;">
+                <a class="button is-warning" type="btn" id="remove-queue-item" style="vertical-align: center">Remove from Queue</a>
+              </div>
             </div>
             <br/><br/>
-            <% if (user.type === "TA") { %>
-            <a class="btn" type="submit" id="seeStudent">See student</a>
-            <% } %>
+            <div style="text-align:center;">
+              <% if (user) { %>
+              <a class="button is-success" type="submit" id="seeStudent">See student</a>
+              <% } %>
+            </div>
         </div>
       </div>
     </div>

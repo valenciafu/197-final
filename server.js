@@ -45,7 +45,6 @@ var User = require('./models/user');
 //       also pass to ejs template a user object so we can conditionally
 //       render the submit box
 app.get('/', function (req, res, next) {
-  console.log(req.session.usertype);
   var questionDb = Question.find({}, function(err, results) {
   	if (!err) {
   		res.render('index', { questions: results, user: req.session.user, userType: req.session.usertype });
@@ -61,7 +60,7 @@ app.get('/', function (req, res, next) {
 //       c) redirect the user back to the home page when done
 app.post('/', isAuthenticated, function (req, res, next) {
 	var q = req.body.question;
-  var a = req.session.user
+  	var a = req.session.user
 	var dbQ = new Question({ author: a, questionText: q });
 	dbQ.save(function (err, result, next) {
 		if (!err) {

@@ -13,7 +13,7 @@
       <h1 style="font-size:2rem; font-weight:600; margin-left:1rem">Office Hours Queue</h1>
       <% if (user) { %>
       <p>Hi <b><%= user %></b>!</p>
-      <p>
+      <p>Queue size: <%= questions.length %></p>
       <a class="button is-primary is-outlined" id="faq-button" href="#">FAQ</a>
       <a class="button is-primary is-outlined" href="/account/logout">Log out</a>
       <!-- modal for faq -->
@@ -22,6 +22,8 @@
         <div class="modal-content" style="text-align: right">
           <button class="delete is-large" aria-label="close" id="close-modal"></button>
           <p align="left">
+            <b>For testing: accounts are 'test-ta', 'test-student', 'test-student2', 'test-student3'. All passwords are 'test'.</b>
+            <br><br>
             No more blackboard OH queues! View the queue in the column to the left. Grayed spots are currently being seen by TAs.
             <br><br>
             Students: join the queue in two clicks. Edit or remove your own spot(s) in the queue 

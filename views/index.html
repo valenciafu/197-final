@@ -11,28 +11,36 @@
   <body>
     <div class="nav level is-marginless">
       <h1 style="font-size:2rem; font-weight:600; margin-left:1rem">Office Hours Queue</h1>
-      <% if (user) { %>
-      <p>Hi <b><%= user %></b>!</p>
-      <p>Queue size: <%= questions.length %></p>
-      <a class="button is-primary is-outlined" id="faq-button" href="#">FAQ</a>
-      <a class="button is-primary is-outlined" href="/account/logout">Log out</a>
-      <!-- modal for faq -->
-      <div class="modal faqm" style="display:none;">
-        <div class="modal-background"></div>
-        <div class="modal-content" style="text-align: right">
-          <button class="delete is-large" aria-label="close" id="close-modal"></button>
-          <p align="left">
-            <b>For testing: accounts are 'test-ta', 'test-student', 'test-student2', 'test-student3'. All passwords are 'test'.</b>
-            <br><br>
-            No more blackboard OH queues! View the queue in the column to the left. Grayed spots are currently being seen by TAs.
-            <br><br>
-            Students: join the queue in two clicks. Edit or remove your own spot(s) in the queue 
-            <br><br> 
-          TAs: Click on students in the queue to see them or remove them from the queue.</p>
+
+      <div class="level" style="width:10rem">
+        <p>Queue size: <%= questions.length %></p>
+        <a class="button is-primary is-outlined" id="faq-button" href="#">FAQ</a>
+
+        <!-- modal for faq -->
+        <div class="modal faqm" style="display:none;">
+          <div class="modal-background"></div>
+          <div class="modal-content" style="text-align: right">
+            <button class="delete is-large" aria-label="close" id="close-modal"></button>
+            <p align="left">
+              <b>For testing: accounts are 'test-ta', 'test-student', 'test-student2', 'test-student3'. All passwords are 'test'.</b>
+              <br><br>
+              No more blackboard OH queues! View the queue in the column to the left. Grayed spots are currently being seen by TAs.
+              <br><br>
+              Students: join the queue in two clicks. Edit or remove your own spot(s) in the queue 
+              <br><br> 
+            TAs: Click on students in the queue to see them or remove them from the queue.</p>
+          </div>
         </div>
       </div>
-      </p>
-      <% } %>
+
+
+      <div class="level" style="margin-right:1rem">
+        <% if (user) { %>
+        <p style="margin-right:1rem">Hi <b><%= user %></b>!</p>
+        <a class="button is-primary is-outlined" href="/account/logout">Log out</a>
+        <% } %>
+      </div>
+
     </div>
     <div class="main-body">
       <div class="left-col">

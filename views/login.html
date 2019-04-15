@@ -1,32 +1,56 @@
 <html>
   <head>
     <title>Log in</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
   </head>
   <body>
     <div id="login_box"></div>
+    <div class="div">
+      <div class="box" style="width:50%; margin-left:auto; margin-right:auto; margin-top:5%">
+        <h1 class="title">Log in</h1>
+        <p></p>
 
-    <h1>Log in</h1>
-    <form method="POST">
-      Name: <br/>
-      <input type="text" name="username"/> <br/><br/>
-      Password: <br/>
-      <input type="password" name="password"/> <br/><br/>
-      User type: <br/>
-      <select name="type">
-        <option value="student">Student</option>
-        <option value="ta">TA</option>
-      </select>
-      <button type="submit">Log in</button> <br/>
-    </form>
+        <form method="POST">
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input class="input" type="text" name="username"/>
+            </div>
+          </div>
 
-    <br><br>
-    <p>Don't have an account for today's OHQ yet? Sign up <a href="/account/signup">here</a></p>
+          <div class="field">
+            <label class="label">Password</label>
+            <div class="control">
+              <input class="input" type="password" name="password"/>
+            </div>
+          </div>
+
+          <div class="field">
+            <label class="label">User type</label>
+            <div class="control">
+              <div class="select">
+                <select name="type">
+                  <option value="student">Student</option>
+                  <option value="ta">TA</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <button class="button is-success" type="submit">Log in</button> <br/>
+        </form>
+      </div>
+      <div class="box has-text-centered" style="width:50%; margin-left:auto; margin-right:auto; margin-top:5%">
+        <p>Don't have an account for today's OHQ yet?</p><br>
+        <a class="button is-primary is-outlined" href="/account/signup">Sign up here</a>
+      </div>
+    </div>
 
 
     <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
 
     <!-- Load our React component. -->
-    <script src="login_box.js"></script>
+    <script src="./login_box.js"></script>
   </body>
 </html>

@@ -40,7 +40,6 @@ $(document).ready(function () {
       $('#show-question').css('display', 'block');
       $('#question').text(active.questionText ? active.questionText: '');
       $('#author').text(active.author ? active.author: '');
-      $('#answer-text').text(active.answer ? active.answer : '');
     } else {
       $('#show-question').css('display', 'none');
     }
@@ -72,6 +71,11 @@ $(document).ready(function () {
 
 
   $('#remove-queue-item').on('click', function () {
+    console.log(data[activeIdx]._id);
+    console.log(data[activeIdx].author);
+    if (data[activeIdx]._id !== data[activeIdx].author) {
+      $('#error-msg').css('display', 'block');
+    }
     $.ajax({
       url: '/api/removeQueueItem',
       data: { qid: data[activeIdx]._id, qAuthor: data[activeIdx].author },
@@ -82,6 +86,7 @@ $(document).ready(function () {
     })
   })
 
+  // show FAQ modal
   $('#faq-button').on('click', function () {
     $('.faqm').css('display', 'block');
   })
@@ -91,7 +96,7 @@ $(document).ready(function () {
     $('.nqm').css('display', 'block');
   })
 
-
+  // generic close modal button
   $('#close-modal').on('click', function () {
     $('.modal').css('display', 'none');
   })
@@ -105,7 +110,6 @@ $(document).ready(function () {
       data: { questionText: qText },
       type: 'POST',
       success: function(res) {
-        console.log(res);
         $('.modal').css('display', 'none');
       }
     })

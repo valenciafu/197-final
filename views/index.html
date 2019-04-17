@@ -12,9 +12,9 @@
     <div class="nav level is-marginless">
       <h1 style="font-size:2rem; font-weight:600; margin-left:1rem">Office Hours Queue</h1>
 
-      <div class="level" style="width:10rem">
+      <div class="level" style="width:12rem; margin-top:1.5rem">
         <p>Queue size: <%= questions.length %></p>
-        <a class="button is-primary is-outlined" id="faq-button" href="#">FAQ</a>
+        <a class="button is-primary is-outlined is-rounded" id="faq-button" href="#">FAQ</a>
 
         <!-- modal for faq -->
         <div class="modal faqm" style="display:none;">
@@ -88,6 +88,7 @@
               <hr>
               <div style="text-align:center;">
                 <a class="button is-warning" type="btn" id="remove-queue-item" style="vertical-align: center">Remove from Queue</a>
+                <span id="error-msg" style="color:#ff0000; display:none">Can't modify a spot that is not your own!</span>
               </div>
             </div>
             <br/><br/>

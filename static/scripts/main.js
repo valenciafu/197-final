@@ -71,11 +71,6 @@ $(document).ready(function () {
 
 
   $('#remove-queue-item').on('click', function () {
-    console.log(data[activeIdx]._id);
-    console.log(data[activeIdx].author);
-    if (data[activeIdx]._id !== data[activeIdx].author) {
-      $('#error-msg').css('display', 'block');
-    }
     $.ajax({
       url: '/api/removeQueueItem',
       data: { qid: data[activeIdx]._id, qAuthor: data[activeIdx].author },

@@ -42,12 +42,6 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 var User = require('./models/user');
 
 
-const mainjsPath = path.join(__dirname,'public','build','main.js')
-if (!fs.existsSync(mainjsPath)) {
-  fs.writeFileSync(mainjsPath, '')
-}
-
-
 // TODO: render out an index.html page with questions (queried from db)
 //       also pass to ejs template a user object so we can conditionally
 //       render the submit box

@@ -1,19 +1,18 @@
-// TODO: Import various things...
-// - express
-// - path
-// - body-parser
-// - cookie-session
-// - mongoose
-// - various other file imports
+var express = require('express');
+var path = require('path');
+var bodyParser = require('body-parser');
+
+var frontendRoutes = require('./routes/frontend.js');
 var accountRoutes = require('./routes/account.js');
 var apiRoutes = require('./routes/api.js');
 
-var Question = require('./models/question');
-var isAuthenticated = require('./middlewares/isAuthenticated');
+// var User = require('../../../models/user');
+// var Question = require('../../../models/question');
 
-// instantiate express app...TODO: make sure that you have required express
-var express = require('express');
+// var isAuthenticated = require('./middlewares/isAuthenticated');
+
 var app = express();
+
 // instantiate a mongoose connect call
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/ohq_db', {useNewUrlParser: true})
@@ -23,7 +22,6 @@ app.engine('html', require('ejs').__express);
 app.set('view engine', 'html');
 
 // TODO: set up body parser...hint hint: https://github.com/cis197/lecture-examples/blob/master/server-example/server.js#L27
-var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -35,11 +33,9 @@ app.use(cookieSession({
 	maxAge: 24 * 60 * 60 * 1000,
 }))
 
-var path = require('path');
+
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-//var questionsArr = [];
-var User = require('./models/user');
 
 
 // TODO: render out an index.html page with questions (queried from db)
@@ -73,12 +69,8 @@ app.post('/', isAuthenticated, function (req, res, next) {
 })
 
 app.use('/api', apiRoutes);
-
-// TODO: Set up account routes under the '/account' route prefix. 
-// (i.e. login should be /account/login, signup = /account/signup, 
-//       logout = /account/logout)
 app.use('/account', accountRoutes);
-
+app.use('/', frontendRoutes);
 
 // don't put any routes below here!
 app.use(function (err, req, res, next) {

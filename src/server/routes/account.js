@@ -6,6 +6,8 @@ var User = require('../models/user');
 var isAuthenticated = require('../middlewares/isAuthenticated');
 
 //json of all accounts
+
+
 router.get('/getAccounts', function (req, res, next) {
 	var userDb = User.find({}, function(err, results) {
   	if (!err) {

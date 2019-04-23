@@ -6,10 +6,10 @@ var frontendRoutes = require('./routes/frontend.js');
 var accountRoutes = require('./routes/account.js');
 var apiRoutes = require('./routes/api.js');
 
-// var User = require('../../../models/user');
-// var Question = require('../../../models/question');
+var User = require('./database/models/user');
+var Question = require('./database/models/question');
 
-// var isAuthenticated = require('./middlewares/isAuthenticated');
+var isAuthenticated = require('./middlewares/isAuthenticated');
 
 var app = express();
 

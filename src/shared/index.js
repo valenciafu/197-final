@@ -22,3 +22,4 @@ ReactDOM.render(
     </Router>
   </Provider>,
   document.getElementById('react-app'),
+ );

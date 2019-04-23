@@ -9,7 +9,7 @@ var apiRoutes = require('./routes/api.js');
 var User = require('./database/models/user');
 var Question = require('./database/models/question');
 
-var isAuthenticated = require('./middlewares/isAuthenticated');
+var isAuthenticated = require('../../middlewares/isAuthenticated');
 
 var app = express();
 
@@ -34,13 +34,15 @@ app.use(cookieSession({
 }))
 
 
-app.use('/static', express.static(path.join(__dirname, 'static')));
-
+// app.use('/static', express.static(path.join(__dirname, 'static')));
+global.basedir = path.join(__dirname, '..', '..');
+app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 
 
 // TODO: render out an index.html page with questions (queried from db)
 //       also pass to ejs template a user object so we can conditionally
 //       render the submit box
+
 app.get('/', function (req, res, next) {
   var questionDb = Question.find({}, function(err, results) {
   	if (!err) {
@@ -55,6 +57,7 @@ app.get('/', function (req, res, next) {
 //       a) check to see if a user is authenticated
 //       b) add a new question to the db
 //       c) redirect the user back to the home page when done
+
 app.post('/', isAuthenticated, function (req, res, next) {
 	var q = req.body.question;
   	var a = req.session.user

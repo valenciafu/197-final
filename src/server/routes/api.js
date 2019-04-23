@@ -1,7 +1,7 @@
 var express = require('express')
 var router = express.Router()
 
-var Question = require('../models/question.js')
+var Question = require('../database/models/question.js')
 
 router.get('/getQuestions', function (req, res, next) {
 	var questionDb = Question.find({}, function(err, results) {

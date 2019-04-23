@@ -1,9 +1,9 @@
 var express = require('express')
 var router = express.Router();
 
-var User = require('../models/user');
+var User = require('../database/models/user.js');
 
-var isAuthenticated = require('../middlewares/isAuthenticated');
+var isAuthenticated = require('../../../middlewares/isAuthenticated');
 
 //json of all accounts
 

@@ -14,6 +14,7 @@ import { Route, Switch } from 'react-router-dom';
 // import Reservations from './reservations/App'
 // import Mobile from './mobile/App'
 
+import Home from './home/app'
 import Login from './login/app'
 
 
@@ -31,13 +32,11 @@ import Login from './login/app'
 
 export default () => (
   <App>
-    <div id="wrapper">
-      <div id="app">
-        <Switch>
-          <Route exact path="/accounts/login" component={Login} />
-          <Route path="*" component={NotFound} />
-        </Switch>
-      </div>
+    <div id="app">
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/account/login" component={Login} />
+      </Switch>
     </div>
   </App>
 );

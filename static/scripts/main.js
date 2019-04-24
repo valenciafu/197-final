@@ -14,6 +14,7 @@ $(document).ready(function () {
       type: 'GET',
       success: function(res) {
         data = res.questions;
+        currentUser = res.currentUser;
         renderPreviews();
         renderActive();
         renderQueueSize();
@@ -24,23 +25,27 @@ $(document).ready(function () {
 
   // makes a list  of questions which all have the question text and a data-qid attribute
   // that allows you to access their _id by doing $whateverjQueryObjectYouHave.data('qid')
-  // function renderPreviews() {
-  //   $('#questions').html(
-  //     data.map((i) => '<li data-qid="' + i._id + '">' + i.author + '</li>').join('')
-  //   )
-  // }
 
   function renderPreviews() {
     $('#questions').html(
-      data.map((i) => '<li data-qid="' + i._id + '" data-seen="' + i.seen + '">' + i.author + '</li>').join('')
+      data.map((i) => '<li data-qid="' + i._id + '" data-seen="' + i.seen + checkOwnQ(i.author) + '">' + i.author + '</li>').join('')
     )
+  }
+
+  function checkOwnQ(author) {
+    if (currentUser === author) {
+      return '" data-own="true"'
+    } else {
+      return '" data-own="false"'
+    }
+    
   }
 
   function renderActive() {
     if (activeIdx > -1) {
       var active = data[activeIdx];
       $('#show-question').css('display', 'block');
-      $('#question').text(active.questionText ? active.questionText: '');
+      $('#questionText').text(active.questionText ? active.questionText: '');
       $('#author').text(active.author ? active.author: '');
     } else {
       $('#show-question').css('display', 'none');

@@ -4,9 +4,10 @@ var router = express.Router()
 var Question = require('../models/question.js')
 
 router.get('/getQuestions', function (req, res, next) {
+	var user = req.session.user;
 	var questionDb = Question.find({}, function(err, results) {
   	if (!err) {
-  		res.json({ questions: results });
+  		res.json({ questions: results, currentUser: user});
   	} else {
   		res.send(err.message);
   	}

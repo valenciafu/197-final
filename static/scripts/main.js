@@ -73,7 +73,6 @@ $(document).ready(function () {
 
   $('#seeStudent').on('click', function () {
     var _id = data[activeIdx]._id;
-    console.log(_id)
     $.ajax({
       url: '/api/seeStudent',
       data: { qid: data[activeIdx]._id },

@@ -71,7 +71,7 @@ $(document).ready(function () {
     renderActive();
   })
 
-    $('#seeStudent').on('click', function () {
+  $('#seeStudent').on('click', function () {
     var _id = data[activeIdx]._id;
     console.log(_id)
     $.ajax({
@@ -97,6 +97,8 @@ $(document).ready(function () {
         }
       }
     })
+
+    activeIdx = -1;
   })
 
   // show FAQ modal

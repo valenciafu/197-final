@@ -17,6 +17,7 @@ $(document).ready(function () {
         renderPreviews();
         renderActive();
         renderQueueSize();
+        refreshError();
       }
     })
   }
@@ -31,7 +32,7 @@ $(document).ready(function () {
 
   function renderPreviews() {
     $('#questions').html(
-      data.map((i) => '<li data-qid="' + i._id + '" id="' + i.seen + '">' + i.author + '</li>').join('')
+      data.map((i) => '<li data-qid="' + i._id + '" data-seen="' + i.seen + '">' + i.author + '</li>').join('')
     )
   }
 
@@ -48,6 +49,10 @@ $(document).ready(function () {
 
   function renderQueueSize() {
     $('#queue-size').text('Queue size: ' + data.length);
+  }
+
+  function refreshError() {
+    $('#error-msg').css('display', 'none');
   }
 
   $('#questions').on('click', 'li', function () {
@@ -82,7 +87,7 @@ $(document).ready(function () {
       type: 'DELETE',
       success: function(res) {
         console.log(res);
-        if (res === "Error") {
+        if (res.status === "Error") {
           $('#error-msg').css('display', 'block');
         }
       }

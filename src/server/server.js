@@ -36,7 +36,7 @@ app.use(cookieSession({
 
 // app.use('/static', express.static(path.join(__dirname, 'static')));
 global.basedir = path.join(__dirname, '..', '..');
-app.use(express.static(path.join(__dirname, '..', '..', 'public')));
+app.use(express.static(path.join(__dirname, '..', '..', 'static')));
 
 
 // TODO: render out an index.html page with questions (queried from db)

@@ -16,6 +16,7 @@ $(document).ready(function () {
         data = res.questions;
         renderPreviews();
         renderActive();
+        renderQueueSize();
       }
     })
   }
@@ -43,6 +44,10 @@ $(document).ready(function () {
     } else {
       $('#show-question').css('display', 'none');
     }
+  }
+
+  function renderQueueSize() {
+    $('#queue-size').text('Queue size: ' + data.length);
   }
 
   $('#questions').on('click', 'li', function () {

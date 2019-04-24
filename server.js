@@ -9,6 +9,7 @@ var accountRoutes = require('./routes/account.js');
 var apiRoutes = require('./routes/api.js');
 
 var Question = require('./models/question');
+var User = require('./models/user');
 var isAuthenticated = require('./middlewares/isAuthenticated');
 
 // instantiate express app...TODO: make sure that you have required express
@@ -37,15 +38,6 @@ app.use(cookieSession({
 
 var path = require('path');
 app.use('/static', express.static(path.join(__dirname, 'static')));
-
-//var questionsArr = [];
-var User = require('./models/user');
-
-
-const mainjsPath = path.join(__dirname,'public','build','main.js')
-if (!fs.existsSync(mainjsPath)) {
-  fs.writeFileSync(mainjsPath, '')
-}
 
 
 // TODO: render out an index.html page with questions (queried from db)

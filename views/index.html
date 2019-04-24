@@ -33,19 +33,19 @@
         </div>
       </div>
 
-
       <div class="level" style="margin-right:1rem">
         <% if (user) { %>
         <p style="margin-right:1rem">Hi <b><%= user %></b>!</p>
         <a class="button is-primary is-outlined" href="/account/logout">Log out</a>
         <% } %>
       </div>
-
     </div>
+    
     <div class="main-body">
       <div class="left-col">
       <% if (user) { %>
       <a href="#" class="btn" id="new-question">+ Join Queue</a>
+
       <!-- modal for adding new question -->
       <div class="modal nqm" style="display:none;">
         <div class="modal-background"></div>

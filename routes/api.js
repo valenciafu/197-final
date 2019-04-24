@@ -49,7 +49,8 @@ router.delete('/removeQueueItem', function (req, res, next) {
 			});
 		}); 
 	} else {
-		res.json({ status: "Error: Students cannot alter spots that are not your own"});
+		res.send
+		res.json({ status: "Error"});
 	}
 })
 

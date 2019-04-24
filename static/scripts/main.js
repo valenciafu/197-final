@@ -82,6 +82,9 @@ $(document).ready(function () {
       type: 'DELETE',
       success: function(res) {
         console.log(res);
+        if (res === "Error") {
+          $('#error-msg').css('display', 'block');
+        }
       }
     })
   })
